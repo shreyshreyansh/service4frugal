@@ -18,11 +18,19 @@ app.get("/", (request, response) => {
 
 app.post("/register", db.registerUser);
 
-app.post("/finduser", db.findUser);
+app.get("/getallusers", db.getallusers);
 
-app.delete("/users/:id", db.deleteUser);
+app.post("/getauser", db.getauser);
+
+app.get("/getalltokens", db.getalltokens);
+
+app.post("/getatoken", db.getatoken);
+
+app.post("/login", db.loginUser);
 
 app.post("/istokenvalid", db.isTokenValid);
+
+app.delete("/users/:id", db.deleteUser);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
