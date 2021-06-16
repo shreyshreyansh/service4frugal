@@ -30,7 +30,7 @@ app.post("/register", (req, res) => {
   register(req, res);
 });
 
-app.get("/getallusers", (req, res) => {
+app.post("/getallusers", (req, res) => {
   getallusers(req, res);
 });
 
@@ -38,7 +38,7 @@ app.post("/getauser", (req, res) => {
   getauser(req, res);
 });
 
-app.get("/getalltokens", (req, res) => {
+app.post("/getalltokens", (req, res) => {
   getalltokens(req, res);
 });
 
@@ -54,7 +54,7 @@ app.post("/istokenvalid", (req, res) => {
   istokenvalid(req, res);
 });
 
-app.delete("/deleteuser/:userid", (req, res) => {
+app.delete("/deleteuser", (req, res) => {
   deleteuser(req, res);
 });
 

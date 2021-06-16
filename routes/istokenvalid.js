@@ -22,6 +22,7 @@ async function validateToken(token, secret) {
       success: "tokenid valid",
       userid: result.userid,
       username: result.username,
+      role: result.role,
       iat: result.iat,
       exp: result.exp,
       status: 1,

@@ -37,7 +37,9 @@ async function checkSaltPasswordAndUpdateToken(
         const payLoad = {
           userid: results.rows[0].userid,
           username: results.rows[0].username,
+          role: results.rows[0].role,
         };
+        console.log(payLoad);
         const token = jwt.sign(payLoad, JWT_SECRET, {
           algorithm: "HS256",
           expiresIn: 60 * 5,

@@ -1,20 +1,51 @@
 const pool = require("../database/connect");
-
+var http = require("http");
 //----------------see a specific the users-------------//
 
-const getauser = (req, res) => {
-  pool.query(
-    "SELECT * FROM userdata where userid = $1",
-    [req.body.userid],
-    (err, result) => {
-      if (err) res.send({ error: err });
-      else
-        res.send({
-          count: Object.keys(result.rows).length,
-          result: result.rows,
-        });
-    }
-  );
+module.exports = (request, response) => {
+  var data = JSON.stringify({ token: request.body.tokenid });
+  var options = {
+    host: "localhost",
+    port: "4000",
+    path: "/istokenvalid",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Content-Length": data.length,
+    },
+  };
+  const req = http.request(options, (res) => {
+    res.on("data", (d) => {
+      var jsondata = JSON.parse(d);
+      if (jsondata.status == 0) {
+        response.send({ error: "token id expired or incorrect" });
+      } else {
+        getauser(request, response, jsondata);
+      }
+    });
+  });
+  req.on("error", (error) => {
+    console.error(error);
+  });
+  req.write(data);
+  req.end();
 };
 
-module.exports = getauser;
+const getauser = (req, res, jsondata) => {
+  console.log(jsondata);
+  if (jsondata.role === "admin" || jsondata.userid === req.body.userid) {
+    pool.query(
+      "SELECT * FROM userdata where userid = $1",
+      [req.body.userid],
+      (err, result) => {
+        if (err) res.send({ error: err });
+        else
+          res.send({
+            count: Object.keys(result.rows).length,
+            result: result.rows,
+          });
+      }
+    );
+  } else
+    res.send({ error: "admin access required or token invalid for the user" });
+};
