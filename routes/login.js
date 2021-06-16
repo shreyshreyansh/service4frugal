@@ -1,17 +1,9 @@
-const Pool = require("pg").Pool;
+const pool = require("../database/connect");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const JWT_SECRET = "{8367E87C-B794-4A04-89DD-15FE7FDBFF78}";
-
-const pool = new Pool({
-  user: "frugal",
-  host: "localhost",
-  database: "users",
-  password: "password",
-  port: 5432,
-});
 
 //----------------login a user---------------//
 

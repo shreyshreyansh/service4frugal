@@ -1,11 +1,4 @@
-const Pool = require("pg").Pool;
-const pool = new Pool({
-  user: "frugal",
-  host: "localhost",
-  database: "users",
-  password: "password",
-  port: 5432,
-});
+const pool = require("../database/connect");
 
 //----------------see all the tokens-------------//
 

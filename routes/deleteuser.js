@@ -1,17 +1,9 @@
-const Pool = require("pg").Pool;
-const pool = new Pool({
-  user: "frugal",
-  host: "localhost",
-  database: "users",
-  password: "password",
-  port: 5432,
-});
+const pool = require("../database/connect");
 
 //----------------------delete a user------------------//
 
 module.exports = (request, response) => {
   const id = request.params.userid;
-  console.log(id);
   pool.query(
     "DELETE FROM userdata WHERE userid = $1",
     [id],

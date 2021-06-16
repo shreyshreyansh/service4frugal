@@ -1,13 +1,5 @@
-const Pool = require("pg").Pool;
+const pool = require("../database/connect");
 const bcrypt = require("bcrypt");
-
-const pool = new Pool({
-  user: "frugal",
-  host: "localhost",
-  database: "users",
-  password: "password",
-  port: 5432,
-});
 
 //----------register a user--------------//
 
