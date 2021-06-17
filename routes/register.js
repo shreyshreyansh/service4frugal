@@ -33,7 +33,6 @@ module.exports = (request, response) => {
 };
 
 const registerUser = (req, res, jsondata) => {
-  console.log(jsondata);
   if (jsondata.role === "admin") {
     const sql = "SELECT userid FROM userdata WHERE userid = $1";
     pool.query(sql, [req.body.userid], (err, result) => {
@@ -53,7 +52,7 @@ async function hashPasswordAndInsertUserInDB(req, res) {
     const hash = await bcrypt.hash(req.body.password, 10);
     insertUserIntoUserdata(req, res, hash);
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 }
 

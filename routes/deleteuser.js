@@ -34,7 +34,6 @@ module.exports = (request, response) => {
 const deleteuser = (request, response, jsondata) => {
   if (jsondata.role === "admin") {
     const id = request.body.userid;
-    console.log(id);
     pool.query(
       "DELETE FROM userdata WHERE userid = $1",
       [id],

@@ -32,7 +32,6 @@ module.exports = (request, response) => {
 };
 
 const getauser = (req, res, jsondata) => {
-  console.log(jsondata);
   if (jsondata.role === "admin" || jsondata.userid === req.body.userid) {
     pool.query(
       "SELECT * FROM userdata where userid = $1",
