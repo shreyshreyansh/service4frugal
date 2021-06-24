@@ -2,14 +2,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 //functions
-const register = require("./routes/register");
-const getallusers = require("./routes/getallusers");
-const getauser = require("./routes/getauser");
-const getalltokens = require("./routes/getalltokens");
-const getatoken = require("./routes/getatoken");
-const login = require("./routes/login");
-const deleteuser = require("./routes/deleteuser");
-const istokenvalid = require("./routes/istokenvalid");
+const register = require("./apis/v1/routes/register");
+const getallusers = require("./apis/v1/routes/getallusers");
+const getauser = require("./apis/v1/routes/getauser");
+const getalltokens = require("./apis/v1/routes/getalltokens");
+const getatoken = require("./apis/v1/routes/getatoken");
+const login = require("./apis/v1/routes/login");
+const deleteuser = require("./apis/v1/routes/deleteuser");
+const istokenvalid = require("./apis/v1/routes/istokenvalid");
 
 //express app
 const app = express();
