@@ -1,5 +1,5 @@
-const pool = require("../../../database/model/connect");
-const req = require("../../../functions/request");
+const pool = require("../database/model/connect");
+const req = require("../functions/request");
 const bcrypt = require("bcrypt");
 const authorization = ["admin"];
 

@@ -1,5 +1,5 @@
-const pool = require("../../../database/model/connect");
-const req = require("../../../functions/request");
+const pool = require("../database/model/connect");
+const req = require("../functions/request");
 const authorization = ["admin"];
 module.exports = (request, response) => req(request, response, getalltokens);
 
